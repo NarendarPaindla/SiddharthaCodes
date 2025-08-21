@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Text & Font Styling Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7fa;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 { text-align: center; margin-bottom: 30px; }
+
+    /* font-size demo */
+    h2.size-px { font-size: 30px; color: #0077cc; }
+    h2.size-em { font-size: 1.875em; color: #0055aa; }
+
+    /* font-family demo */
+    h2.family {
+      font-family: "Times New Roman", Georgia, serif;
+      color: darkgreen;
+    }
+
+    /* font-weight demo */
+    h2.weight-light { font-weight: lighter; }
+    h2.weight-bold { font-weight: bold; }
+    h2.weight-700 { font-weight: 700; }
+
+    /* font-style demo */
+    h2.style-normal { font-style: normal; }
+    h2.style-italic { font-style: italic; }
+    h2.style-oblique { font-style: oblique; }
+
+    /* text color demo */
+    p.color { color: crimson; }
+
+    /* text-align demo */
+    p#left { text-align: left; background: #eef; }
+    p#center { text-align: center; background: #efe; }
+    p#right { text-align: right; background: #fee; }
+    p#justify { text-align: justify; background: #eef; }
+
+    /* text-indent demo */
+    p.indent { text-indent: 100px; }
+
+    /* text-transform demo */
+    p.uppercase { text-transform: uppercase; }
+    p.lowercase { text-transform: lowercase; }
+    p.capitalize { text-transform: capitalize; }
+
+    /* text-decoration demo */
+    h3#underline { text-decoration: underline; }
+    h3#overline { text-decoration: overline; }
+    h3#line-through { text-decoration: line-through; }
+    a.no-underline { text-decoration: none; color: blue; }
+
+    /* line-height demo */
+    p.line-height { line-height: 2; background: #fafafa; }
+
+    /* letter-spacing demo */
+    h3.letter-spacing { letter-spacing: 5px; }
+
+    /* word-spacing demo */
+    h3.word-spacing { word-spacing: 15px; }
+
+    /* text-shadow demo */
+    h2.shadow { text-shadow: 2px 1px red; }
+  </style>
+</head>
+<body>
+  <h1>CSS Text & Font Properties Demo</h1>
+
+  <h2 class="size-px">Font-size: 30px</h2>
+  <h2 class="size-em">Font-size: 1.875em</h2>
+
+  <h2 class="family">Font-family: "Times New Roman", Georgia, serif</h2>
+
+  <h2 class="weight-light">Font-weight: lighter</h2>
+  <h2 class="weight-bold">Font-weight: bold</h2>
+  <h2 class="weight-700">Font-weight: 700</h2>
+
+  <h2 class="style-normal">Font-style: normal</h2>
+  <h2 class="style-italic">Font-style: italic</h2>
+  <h2 class="style-oblique">Font-style: oblique</h2>
+
+  <p class="color">This text is crimson using the color property.</p>
+
+  <h2>Text-align examples</h2>
+  <p id="left">This paragraph is left aligned.</p>
+  <p id="center">This paragraph is centered.</p>
+  <p id="right">This paragraph is right aligned.</p>
+  <p id="justify">
+    This paragraph is justified. The text stretches so that each line has equal width, 
+    similar to how text appears in newspapers and magazines.
+  </p>
+
+  <h2>Text-indent</h2>
+  <p class="indent">
+    Don’t you just love exploring beautiful and neat sites with a clean user interface?
+    While most of us would reply with "YES", little do we know how CSS makes it possible.
+  </p>
+
+  <h2>Text-transform</h2>
+  <p class="uppercase">this will be uppercase</p>
+  <p class="lowercase">THIS WILL BE LOWERCASE</p>
+  <p class="capitalize">this will be capitalized properly</p>
+
+  <h2>Text-decoration</h2>
+  <h3 id="underline">Underline text</h3>
+  <h3 id="overline">Overline text</h3>
+  <h3 id="line-through">Line-through text</h3>
+  <p><a href="#" class="no-underline">This link has no underline</a></p>
+
+  <h2>Line-height</h2>
+  <p class="line-height">
+    This paragraph has increased line height.<br>
+    Notice the spacing between lines.<br>
+    It looks more spacious and easier to read.
+  </p>
+
+  <h2>Letter-spacing & Word-spacing</h2>
+  <h3 class="letter-spacing">Letter Spacing Example</h3>
+  <h3 class="word-spacing">Word Spacing Example</h3>
+
+  <h2 class="shadow">Text Shadow Example</h2>
+</body>
+</html>

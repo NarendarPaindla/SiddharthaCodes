@@ -4,6 +4,362 @@
   <meta charset="utf-8" />
   <title>Student Registration System — Single Page (HTML Only)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+/* -------------------------------------------------------
+   0) TEACHING ROADMAP (what this CSS demonstrates)
+   • Reset & base styles
+   • CSS variables (light/dark)
+   • Typography & spacing scale
+   • Layout: container, flexbox (nav), grid (cards)
+   • Components: header/nav, sections, table, forms, media
+   • States: hover, focus-visible, :target section highlighting
+   • Transitions & keyframe animations
+   • Responsive design with media queries
+   • prefers-color-scheme for dark mode
+   • Print styles
+--------------------------------------------------------*/
+
+/* 1) SIMPLE RESET (safe, minimal) */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body, h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+img, video { max-width: 100%; height: auto; display: block; }
+ul[role], nav ul { list-style: none; padding-left: 0; }
+
+/* 2) DESIGN TOKENS WITH CSS VARIABLES */
+:root {
+  /* Colors (light) */
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #5a6b7a;
+  --brand: #4458fe;
+  --brand-ink: #1b2bff;
+  --accent: #05a081;
+  --warn: #efb034;
+  --danger: #e45757;
+  --border: #e3e7ee;
+  --shadow: 0 10px 24px rgba(20, 28, 58, 0.08);
+
+  /* Typography scale */
+  --font-body: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --size-0: 12px;
+  --size-1: 14px;
+  --size-2: 16px;
+  --size-3: 18px;
+  --size-4: 22px;
+  --size-5: 28px;
+  --size-6: 36px;
+
+  /* Spacing scale */
+  --sp-1: 6px;
+  --sp-2: 10px;
+  --sp-3: 14px;
+  --sp-4: 18px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* Radius */
+  --rounded: 12px;
+  --rounded-lg: 16px;
+
+  /* Form focus ring */
+  --focus: 0 0 0 3px rgba(68, 88, 254, 0.25);
+}
+
+/* 3) DARK MODE (auto) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1320;
+    --surface: #141a2a;
+    --text: #e7ecf5;
+    --muted: #9aabc0;
+    --brand: #7c8bff;
+    --brand-ink: #b9c1ff;
+    --accent: #39d7bb;
+    --warn: #ffd27a;
+    --danger: #ff8f8f;
+    --border: #27304a;
+    --shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* 4) BASE */
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(68,88,254,.10), transparent 60%),
+              radial-gradient(800px 500px at 100% 0%, rgba(57,215,187,.08), transparent 60%),
+              var(--bg);
+  line-height: 1.6;
+  font-size: var(--size-2);
+}
+
+/* 5) LAYOUT CONTAINER */
+main, header, footer {
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+main { padding-block: var(--sp-6); }
+header { padding-block: var(--sp-4); }
+
+/* 6) HEADER & NAV (flexbox) */
+header > h1 {
+  font-size: clamp(var(--size-5), 3.5vw, var(--size-6));
+  letter-spacing: 0.3px;
+  margin-bottom: var(--sp-3);
+}
+
+nav {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow);
+  padding: var(--sp-2) var(--sp-3);
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+nav a {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color .2s ease, background-color .2s ease, transform .2s ease;
+}
+nav a:hover { color: var(--brand); transform: translateY(-1px); }
+nav a[aria-current="page"], nav a:focus-visible, nav a:active {
+  background: rgba(68,88,254,0.10);
+  color: var(--brand-ink);
+  outline: none;
+}
+
+/* 7) SECTION CARD STYLE */
+main > section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-6);
+  margin-top: var(--sp-6);
+  box-shadow: var(--shadow);
+  animation: cardIn .5s ease both;
+}
+@keyframes cardIn {
+  from { opacity: 0; translate: 0 8px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* 8) SECTION HEADINGS */
+section > h2 {
+  font-size: var(--size-5);
+  margin-bottom: var(--sp-3);
+  letter-spacing: .2px;
+}
+section > h3 { font-size: var(--size-4); margin-top: var(--sp-4); }
+
+/* 9) :target HIGHLIGHT (when clicking nav anchors) */
+section:target {
+  outline: 2px solid var(--brand);
+  box-shadow: 0 0 0 4px rgba(68,88,254,0.15), var(--shadow);
+}
+
+/* 10) UTILITIES: subtle divider */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: var(--sp-6) 0;
+}
+
+/* 11) TEXT ELEMENTS */
+p { margin-bottom: var(--sp-3); color: var(--muted); }
+strong { color: var(--text); }
+a { color: var(--brand); }
+a:hover { color: var(--brand-ink); }
+
+/* 12) GRID (cards) for the Course Catalog articles */
+#courses {
+  display: grid;
+  gap: var(--sp-5);
+}
+#courses > article {
+  border: 1px solid var(--border);
+  border-radius: var(--rounded);
+  padding: var(--sp-5);
+  background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 90%, var(--brand) 10%));
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#courses > article:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+#courses h3 { margin-bottom: var(--sp-2); }
+
+/* Responsive grid */
+@media (min-width: 720px) {
+  #courses { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 13) TABLE STYLES (students) */
+#students table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--rounded);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+#students caption {
+  text-align: left;
+  padding: var(--sp-3) var(--sp-4);
+  font-weight: 600;
+  background: linear-gradient(180deg, rgba(68,88,254,0.10), transparent);
+}
+#students thead th {
+  text-align: left;
+  background: color-mix(in srgb, var(--surface) 85%, var(--brand) 15%);
+  color: var(--text);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+#students tbody td {
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+#students tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface) 95%, var(--brand) 5%); }
+#students tbody tr:hover { background: rgba(68,88,254,0.08); }
+
+/* 14) FORMS (register, login, feedback) */
+form {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 720px;
+}
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--rounded);
+  padding: var(--sp-4);
+  background: color-mix(in srgb, var(--surface) 92%, var(--brand) 8%);
+}
+legend {
+  padding: 0 var(--sp-2);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Inline control groups */
+form p { margin: 0; }
+
+/* Inputs & controls */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[list],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+textarea { resize: vertical; min-height: 120px; }
+input[type="file"] {
+  padding: 10px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 95%, var(--brand) 5%);
+}
+
+/* Radio/checkbox spacing */
+input[type="radio"],
+input[type="checkbox"] { transform: translateY(1px); margin-right: 6px; }
+
+/* Focus ring for accessibility */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--brand);
+  box-shadow: var(--focus);
+}
+
+/* Buttons */
+button,
+input[type="submit"],
+input[type="reset"] {
+  appearance: none;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--brand), var(--brand-ink));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, opacity .2s ease;
+  box-shadow: 0 6px 16px rgba(68,88,254,0.25);
+}
+button:hover { transform: translateY(-1px); }
+button:active { transform: translateY(0); opacity: 0.95; }
+button[type="reset"] {
+  background: linear-gradient(180deg, #98a2ff, #707dff);
+}
+
+/* 15) MEDIA (iframes, video, audio) */
+iframe {
+  width: min(100%, 720px);
+  border: 0;
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow);
+}
+video, audio {
+  width: min(100%, 720px);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow);
+  background: #0003;
+}
+
+/* 16) FOOTER */
+footer {
+  width: min(1100px, 92vw);
+  margin: var(--sp-7) auto var(--sp-6);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* 17) RESPONSIVE TUNING */
+@media (max-width: 720px) {
+  nav ul { gap: 6px; }
+  nav a { padding: 8px 12px; font-size: var(--size-1); }
+  main > section { padding: var(--sp-5); }
+  section > h2 { font-size: 24px; }
+}
+
+/* 18) PRINT (make it clean if someone prints the page) */
+@media print {
+  nav, hr, iframe, video, audio { display: none !important; }
+  body { background: white; color: black; }
+  main > section { box-shadow: none; border: 1px solid #ccc; }
+}
+
+/* 19) FUN: subtle entrance animation for headings */
+section > h2 { animation: fadeSlide .6s ease both .05s; }
+@keyframes fadeSlide {
+  from { opacity: 0; translate: 0 10px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+</style>
+
 </head>
 <body>
   <!-- HEADER + NAV -->
