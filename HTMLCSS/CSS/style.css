@@ -17,14 +17,14 @@ p{
 
 .para1{
     color:orange;
-}
+    text-align: center;
 
 #para2{
     color:aqua;
 }
 
 .sec{
-    color:violet;
+    font-size:100px;
 }
 
 #secs{

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Borders Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #333;
+    }
+    .box {
+      width: 250px;
+      height: 80px;
+      margin: 15px 0;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+    }
+    /* ---------------- BORDER WIDTH DEMOS ---------------- */
+    .one-value {
+      border-width: thick;    /* all 4 sides thick */
+      border-style: solid;
+      border-color: #0077cc;
+    }
+    .two-value {
+      border-width: 5px 10px; /* top+bottom = 5px, left+right = 10px */
+      border-style: solid;
+      border-color: green;
+    }
+    .three-value {
+      border-width: 2px 8px 12px; /* top=2, right+left=8, bottom=12 */
+      border-style: solid;
+      border-color: purple;
+      /* background-color: black; */
+    }
+    .four-value {
+      border-width: 2px 5px 10px 20px; /* top, right, bottom, left */
+      border-style: solid;
+      border-color: orange;
+    }
+
+    /* ---------------- BORDER STYLE DEMO ---------------- */
+    .styles {
+      border-width: 6px;
+      border-style: dotted dashed solid double; /* top, right, bottom, left */
+      border-color: red green blue black;
+    }
+
+    /* ---------------- BORDER COLOR DEMO ---------------- */
+    .colors {
+      border-width: 6px;
+      border-style: solid;
+      border-color: red blue; /* top+bottom=red, left+right=blue */
+    }
+
+    /* ---------------- INDIVIDUAL SIDES DEMO ---------------- */
+    .individual {
+      border-top: 5px solid red;
+      border-right: 8px dashed green;
+      border-bottom: 10px double blue;
+      border-left: 12px groove purple;
+    }
+
+    /* ---------------- BORDER RADIUS DEMOS ---------------- */
+    .radius-px {
+      border: 4px solid teal;
+      border-radius: 15px; /* absolute value */
+    }
+    .radius-percent {
+      border: 4px solid tomato;
+      border-radius: 50%; /* makes circle if square */
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Borders Demonstration</h1>
+
+  <h2>Border Width</h2>
+  <div class="box one-value">border-width: thick;</div>
+  <div class="box two-value">border-width: 5px 10px;</div>
+  <div class="box three-value">border-width: 2px 8px 12px;</div>
+  <div class="box four-value">border-width: 2px 5px 10px 20px;</div>
+
+  <h2>Border Style</h2>
+  <div class="box styles">border-style: dotted dashed solid double;</div>
+
+  <h2>Border Color</h2>
+  <div class="box colors">border-color: red blue;</div>
+
+  <h2>Individual Sides</h2>
+  <div class="box individual">Different style for each side</div>
+
+  <h2>Border Radius</h2>
+  <div class="box radius-px">border-radius: 15px;</div>
+  <div class="box radius-percent">border-radius: 50%;</div>
+
+</body>
+</html>
