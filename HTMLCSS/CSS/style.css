@@ -1,0 +1,32 @@
+h1{
+    color:green;
+    font-family: monospace;
+}
+
+h2{
+    color:blue;
+}
+p{
+    color:yellow;
+    font-size: 40px;
+}
+
+.para{
+    color:red;
+}
+
+.para1{
+    color:orange;
+}
+
+#para2{
+    color:aqua;
+}
+
+.sec{
+    color:violet;
+}
+
+#secs{
+    font-size: 56px;
+}

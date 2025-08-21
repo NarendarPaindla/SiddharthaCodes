@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Student Registration System — Single Page (HTML Only)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <!-- HEADER + NAV -->
+  <header>
+    <h1>Student Registration System</h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#students">Student Details</a></li>
+        <li><a href="#courses">Course Catalog</a></li>
+        <li><a href="#campus">Campus Tour</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home">
+      <h2>Welcome</h2>
+      <p>
+        This is an <strong>HTML-only Student Registration System</strong>.
+        Navigate using the menu above to explore registration forms, login, student details,
+        course catalog, and campus tour.
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- REGISTER -->
+    <section id="register">
+      <h2>Student Registration</h2>
+      <form action="#" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Account Information</legend>
+          <p>
+            <label>Email: <input type="email" required /></label>
+          </p>
+          <p>
+            <label>Password: <input type="password" required /></label>
+          </p>
+          <p>
+            <label>Confirm Password: <input type="password" required /></label>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Personal Details</legend>
+          <p><label>First Name: <input type="text" required /></label></p>
+          <p><label>Last Name: <input type="text" required /></label></p>
+          <p>
+            Gender:
+            <label><input type="radio" name="gender" required /> Male</label>
+            <label><input type="radio" name="gender" /> Female</label>
+            <label><input type="radio" name="gender" /> Other</label>
+          </p>
+          <p><label>Date of Birth: <input type="date" required /></label></p>
+          <p><label>Phone: <input type="tel" /></label></p>
+          <p><label>Profile Photo: <input type="file" accept="image/*" /></label></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Academic Details</legend>
+          <p><label>Student ID: <input type="text" required /></label></p>
+          <p>
+            <label>Department: 
+              <input list="departments" required />
+            </label>
+            <datalist id="departments">
+              <option value="Computer Science"></option>
+              <option value="Electronics"></option>
+              <option value="Mechanical"></option>
+              <option value="Civil"></option>
+              <option value="Electrical"></option>
+            </datalist>
+          </p>
+          <p>
+            <label>Preferred Course:
+              <select required>
+                <option value="">--Select--</option>
+                <option>CS101 - Intro to Programming</option>
+                <option>CS201 - Data Structures</option>
+                <option>EE101 - Basic Circuits</option>
+                <option>ME101 - Engineering Mechanics</option>
+              </select>
+            </label>
+          </p>
+          <p>
+            Mode of Study:
+            <label><input type="checkbox" /> Online</label>
+            <label><input type="checkbox" /> Offline</label>
+            <label><input type="checkbox" /> Hybrid</label>
+          </p>
+          <p>
+            <label>Short Bio:<br />
+              <textarea rows="4" cols="40"></textarea>
+            </label>
+          </p>
+        </fieldset>
+
+        <p><label><input type="checkbox" required /> I agree to Terms &amp; Conditions</label></p>
+        <p><button type="submit">Submit</button> <button type="reset">Reset</button></p>
+      </form>
+    </section>
+
+    <hr />
+
+    <!-- LOGIN -->
+    <section id="login">
+      <h2>Login</h2>
+      <form action="#" method="post">
+        <p><label>Email: <input type="email" required /></label></p>
+        <p><label>Password: <input type="password" required /></label></p>
+        <p><label><input type="checkbox" /> Remember me</label></p>
+        <p><button type="submit">Login</button></p>
+      </form>
+    </section>
+
+    <hr />
+
+    <!-- STUDENTS -->
+    <section id="students">
+      <h2>Student Details</h2>
+      <table border="1">
+        <caption>Enrolled Students</caption>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Course</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>STU001</td>
+            <td>Riya Sharma</td>
+            <td>CS</td>
+            <td>CS101</td>
+            <td><a href="mailto:riya@example.com">riya@example.com</a></td>
+          </tr>
+          <tr>
+            <td>STU002</td>
+            <td>Arjun Patel</td>
+            <td>ECE</td>
+            <td>EE101</td>
+            <td><a href="mailto:arjun@example.com">arjun@example.com</a></td>
+          </tr>
+          <tr>
+            <td>STU003</td>
+            <td>Ananya Gupta</td>
+            <td>Civil</td>
+            <td>CE100</td>
+            <td><a href="mailto:ananya@example.com">ananya@example.com</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-- COURSES -->
+    <section id="courses">
+      <h2>Course Catalog</h2>
+      <article>
+        <h3>Computer Science</h3>
+        <p><strong>CS101</strong> - Intro to Programming (4 credits)</p>
+        <p><strong>CS201</strong> - Data Structures (4 credits, requires CS101)</p>
+      </article>
+
+      <article>
+        <h3>Electronics</h3>
+        <p><strong>EE101</strong> - Basic Circuits (3 credits)</p>
+      </article>
+
+      <article>
+        <h3>Mechanical</h3>
+        <p><strong>ME101</strong> - Engineering Mechanics (3 credits)</p>
+      </article>
+    </section>
+
+    <hr />
+
+    <!-- CAMPUS -->
+    <section id="campus">
+      <h2>Campus Tour</h2>
+      <h3>Map</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11610100822!2d72.74109881936965!3d19.082197839795514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63c4980fdfb%3A0x2ad51f02e1c58c88!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000"
+        width="400"
+        height="250">
+      </iframe>
+
+      <h3>Video Tour</h3>
+      <video controls width="400">
+        <source src="campus-tour.mp4" type="video/mp4" />
+        Your browser does not support video.
+      </video>
+
+      <h3>YouTube Tour</h3>
+      <iframe width="400" height="250"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        allowfullscreen>
+      </iframe>
+
+      <h3>Audio Welcome</h3>
+      <audio controls>
+        <source src="welcome-message.mp3" type="audio/mpeg" />
+        Your browser does not support audio.
+      </audio>
+
+      <h3>Feedback</h3>
+      <form>
+        <p><label>Date of Visit: <input type="date" /></label></p>
+        <p><label>Rating (1-5): <input type="number" min="1" max="5" /></label></p>
+        <p><label>Comments:<br /><textarea rows="4" cols="40"></textarea></label></p>
+        <p><button type="submit">Submit Feedback</button></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Student Registration System</p>
+  </footer>
+</body>
+</html>
