@@ -1,19 +1,17 @@
-let b = 50;
-    console.log("Initial b =", b); // 50
+// Declaration
+    var a = 10;
+    console.log("Initial a =", a); // 10
 
-    // Re-assignment is allowed
-    b = 60;
-    console.log("After reassignment b =", b); // 60
+    // Re-declaration allowed
+    var a = 20; 
+    console.log("After redeclaration a =", a); // 20
 
-    // ❌ Re-declaration in same scope gives error
-    // let b = 70;  // Uncomment → SyntaxError
-
-    // Block scope
+    // Not block scoped
     if (true) {
-      let b = 80; // new variable only inside block
-      console.log("Inside block b =", b); // 80
+      var a = 30;
+      console.log("Inside block a =", a); // 30
     }
-    console.log("Outside block b =", b); // 60
+    console.log("Outside block a =", a); // 30 → same variable
 
 
      let b = 50;
