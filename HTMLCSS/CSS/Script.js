@@ -46,3 +46,42 @@
 
     obj.name = "Bob"; // property can be updated
     console.log("After property change obj =", obj); // { name: "Bob" }
+
+
+    for (let i = 1; i <= 5; i++) {
+  console.log("For loop iteration:", i);
+}
+let count = 1;
+while (count <= 5) {
+  console.log("While loop iteration:", count);
+  count++;
+}
+
+let num = 1;
+do {
+  console.log("Do...while iteration:", num);
+  num++;
+} while (num <= 5);
+
+
+function greet(name){
+  return "Hello, "+name+"!";
+}
+
+console.log(greet("Narendar"))
+console.log(greet("Vishnu"))
+
+
+
+
+const greet=(name,role)=>{
+  return `Hey, i am ${name} my role is ${role}`;
+  
+}
+console.log(greet("Narendar","Trainer"))
+console.log(greet("Surya","ldm"))
+
+const arr=[10,20,30,40]
+const arr1=new Array(1,2,3,4,5)
+const arr3=[1,"two",true,["four","five"],{six:6}]
+console.log(arr3)
