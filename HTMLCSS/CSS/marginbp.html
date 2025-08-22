@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Box Model: Border, Margin, Padding</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f7f7fb;
+    margin: 0;
+    padding: 30px;
+    color: #222;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .example {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  }
+
+  .example h2 {
+    margin-top: 0;
+    color: #0055aa;
+  }
+
+  .box {
+    background: #cce5ff;
+    border: 3px solid #0055aa;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+  }
+
+  /* Highlight padding */
+  .box::before {
+    content: "Padding Area";
+    position: absolute;
+    top: 5px; left: 5px;
+    font-size: 12px;
+    color: #333;
+    background: rgba(255,255,255,.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Margin background example */
+  .margin-demo {
+    background: #f0fff0;
+    border: 2px dashed green;
+    margin: 30px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+  }
+  .margin-demo::before {
+    content: "Margin pushes me away!";
+    position: absolute;
+    top: -25px;
+    left: 20px;
+    font-size: 12px;
+    color: green;
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Border demo */
+  .border-demo {
+    background: #ffe6e6;
+    border: 8px solid red;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+  }
+  .border-demo::before {
+    content: "This is the Border!";
+    position: absolute;
+    bottom: -25px;
+    left: 20px;
+    font-size: 12px;
+    color: red;
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Visual labels */
+  .label {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #555;
+  }
+
+  .outer {
+    background: #ddd;
+    padding: 20px;
+  }
+
+</style>
+</head>
+<body>
+  <h1>CSS Box Model: Border, Margin & Padding</h1>
+  <div class="container">
+
+    <!-- PADDING -->
+    <div class="example">
+      <h2>Padding</h2>
+      <p>The <strong>padding</strong> is the space <em>inside</em> the element, between the content and the border.</p>
+      <div class="box">
+        Content inside the box  
+        <div class="label">Padding (blue area) adds space inside border.</div>
+      </div>
+    </div>
+
+    <!-- MARGIN -->
+    <div class="example">
+      <h2>Margin</h2>
+      <p>The <strong>margin</strong> is the space <em>outside</em> the element, creating distance from other elements.</p>
+      <div class="outer">
+        <div class="margin-demo">
+          This box has <code>margin: 30px;</code>
+          <div class="label">Notice extra gap outside the green dashed box.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BORDER -->
+    <div class="example">
+      <h2>Border</h2>
+      <p>The <strong>border</strong> wraps around the padding and content, and sits <em>inside</em> the margin.</p>
+      <div class="border-demo">
+        Content inside border
+        <div class="label">Red border surrounds the element.</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
